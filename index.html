@@ -15,21 +15,32 @@
   <div id="3d-graph"></div>
 
   <script>
-    const imgs = ['cat.jpg', 'dog.jpg', 'eagle.jpg', 'elephant.jpg', 'grasshopper.jpg', 'octopus.jpg', 'owl.jpg', 'panda.jpg', 'squirrel.jpg', 'tiger.jpg', 'whale.jpg'];
+    const imgs = [
+      "cat.jpg",
+      "dog.jpg",
+      "eagle.jpg",
+      "elephant.jpg",
+      "grasshopper.jpg",
+      "octopus.jpg",
+      "owl.jpg",
+      "panda.jpg",
+      "squirrel.jpg",
+      "tiger.jpg",
+      "whale.jpg",
+    ];
 
     // Random connected graph
     const gData = {
       nodes: imgs.map((img, id) => ({ id, img })),
       links: [...Array(imgs.length).keys()]
-        .filter(id => id)
-        .map(id => ({
+        .filter((id) => id)
+        .map((id) => ({
           source: id,
-          target: Math.round(Math.random() * (id - 1))
-        }))
+          target: Math.round(Math.random() * (id - 1)),
+        })),
     };
 
-    const Graph = ForceGraph3D()
-      (document.getElementById('3d-graph'))
+    const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
       .nodeThreeObject(({ img }) => {
         const imgTexture = new THREE.TextureLoader().load(`./imgs/${img}`);
         const material = new THREE.SpriteMaterial({ map: imgTexture });
@@ -37,6 +48,11 @@
         sprite.scale.set(12, 12);
         return sprite;
       })
-      .graphData(gData);
+      .graphData(gData)
+      .onNodeDragEnd((node) => {
+        node.fx = node.x;
+        node.fy = node.y;
+        node.fz = node.z;
+      });
   </script>
 </body>

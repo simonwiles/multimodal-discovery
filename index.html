@@ -5,13 +5,23 @@
     }
   </style>
 
-  <script src="//unpkg.com/three"></script>
-
-  <script src="//unpkg.com/3d-force-graph"></script>
-  <!--<script src="../../dist/3d-force-graph.js"></script>-->
+  <script crossorigin="anonymous" src="https://unpkg.com/three"></script>
+  <script crossorigin="anonymous" src="https://unpkg.com/3d-force-graph"></script>
 </head>
 
 <body>
+  <div id="controls">
+    <label>
+      Factor A
+      <input type="range" id="factor-a" min="0" max="1" step="0.01" value="0.5">
+    </label>
+    <label>
+      Factor B
+      <input type="range" id="factor-b" min="0" max="1" step="0.01" value="0.5">
+    </label>
+
+  </div>
+
   <div id="3d-graph"></div>
 
   <script>
@@ -29,16 +39,23 @@
       "whale.jpg",
     ];
 
-    // Random connected graph
-    const gData = {
-      nodes: imgs.map((img, id) => ({ id, img })),
-      links: [...Array(imgs.length).keys()]
-        .filter((id) => id)
-        .map((id) => ({
-          source: id,
-          target: Math.round(Math.random() * (id - 1)),
-        })),
-    };
+    const pairwise = (list) => {
+      if (list.length < 2) { return []; }
+      const rest = list.slice(1);
+      const pairs = rest.map((x) => [list[0], x]);
+      return pairs.concat(pairwise(rest));
+    }
+
+    const nodes = imgs.map((img, id) => ({ id, img }));
+
+    const links = pairwise([...Array(imgs.length).keys()])
+      .map(([source, target]) => ({
+        source: source,
+        target: target,
+        factorA: parseInt(Math.random() * 100, 10),
+        factorB: parseInt(Math.random() * 100, 10)
+      }));
+
 
     const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
       .nodeThreeObject(({ img }) => {
@@ -48,11 +65,25 @@
         sprite.scale.set(12, 12);
         return sprite;
       })
-      .graphData(gData)
+      .graphData({ nodes, links })
       .onNodeDragEnd((node) => {
         node.fx = node.x;
         node.fy = node.y;
         node.fz = node.z;
       });
+
+    const reheatSimulation = () => {
+      Graph.numDimensions(3); // Re-heat simulation
+    }
+
+
+    const factorARange = document.getElementById("factor-a");
+    const factorBRange = document.getElementById("factor-b");
+    factorARange.addEventListener("change", reheatSimulation);
+    factorBRange.addEventListener("change", reheatSimulation);
+
+    const linkForce = Graph
+      .d3Force('link')
+      .distance(link => (link.factorA * factorARange.value) + (link.factorB * factorBRange.value));
   </script>
 </body>

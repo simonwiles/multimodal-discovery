@@ -6,21 +6,14 @@ from itertools import combinations
 from pathlib import Path
 
 import cv2
-
-import quality_metrics
+import sewar
 
 IMG_PATH = Path("imgs")
 
-# FSIM and (especially) UIQ are slow
 METRICS = [
     "rmse",
     "psnr",
-    "ssim",
-    "issm",
-    # "fsim",
-    "sre",
     "sam",
-    # "uiq"
 ]
 
 
@@ -48,7 +41,7 @@ def main():
         }
         for metric in METRICS:
             logging.info(f"Comparing {img1['name']} and {img2['name']} ({metric})...")
-            link["metrics"][metric] = getattr(quality_metrics, metric)(
+            link["metrics"][metric] = getattr(sewar.full_ref, metric)(
                 img1["img"], img2["img"]
             )
 

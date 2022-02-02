@@ -2,6 +2,7 @@
 
 import json
 import logging
+from difflib import SequenceMatcher
 from itertools import combinations
 from pathlib import Path
 
@@ -37,13 +38,15 @@ def main():
         link = {
             "source": img1["id"],
             "target": img2["id"],
-            "metrics": {},
+            "img-sim": {},
         }
         for metric in METRICS:
             logging.info(f"Comparing {img1['name']} and {img2['name']} ({metric})...")
-            link["metrics"][metric] = getattr(sewar.full_ref, metric)(
+            link["img-sim"][metric] = getattr(sewar.full_ref, metric)(
                 img1["img"], img2["img"]
             )
+
+        link["name-sim"] = SequenceMatcher(None, img1["name"], img2["name"]).ratio()
 
         links.append(link)
 
@@ -51,8 +54,8 @@ def main():
 
     min_max = {
         metric: {
-            "min": min(link["metrics"][metric] for link in links),
-            "max": max(link["metrics"][metric] for link in links),
+            "min": min(link["img-sim"][metric] for link in links),
+            "max": max(link["img-sim"][metric] for link in links),
         }
         for metric in METRICS
     }
@@ -67,7 +70,8 @@ def main():
         {
             "source": link["source"],
             "target": link["target"],
-            "metrics": norm_metrics(link["metrics"]),
+            "img-sim": norm_metrics(link["img-sim"]),
+            "name-sim": link["name-sim"],
         }
         for link in links
     ]

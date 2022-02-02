@@ -92,7 +92,7 @@
           ((1 - link["img-sim"].rmse) * document.getElementById("rmse").value * document.getElementById("rmse-onoff").checked) +
           ((1 - link["img-sim"].sam) * document.getElementById("sam").value * document.getElementById("sam-onoff").checked) +
           ((1 - link["name-sim"]) * document.getElementById("name").value * document.getElementById("name-onoff").checked);
-        console.log(`${link.source.name} <-> ${link.target.name}: ${dist}`);
+        // console.log(`${link.source.name} <-> ${link.target.name}: ${dist}`);
         link.distance = dist * 100;
       });
       linkMinDistance = links.reduce((min, link) => Math.min(min, link.distance), Infinity);

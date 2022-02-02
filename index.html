@@ -63,25 +63,34 @@
         node.fz = node.z;
       });
 
+    let linkMinDistance = 20;
+    let linkMaxDistance = 20;
+
     const update = () => {
       document.querySelectorAll("input[type='checkbox']").forEach(
         elem => elem.nextElementSibling.disabled = !elem.checked);
-      graph.numDimensions(3); // Re-heat simulation
-    }
 
-    document.querySelectorAll("input").forEach(elem => elem.addEventListener("input", update));
-
-    const linkForce = graph
-      .d3Force('link')
-      .distance(link => {
+      graph.d3Force('link').links().forEach(link => {
         const dist =
           ((1 - link["img-sim"].psnr) * document.getElementById("psnr").value * document.getElementById("psnr-onoff").checked) +
           ((1 - link["img-sim"].rmse) * document.getElementById("rmse").value * document.getElementById("rmse-onoff").checked) +
           ((1 - link["img-sim"].sam) * document.getElementById("sam").value * document.getElementById("sam-onoff").checked) +
           ((1 - link["name-sim"]) * document.getElementById("name").value * document.getElementById("name-onoff").checked);
         console.log(`${link.source.name} <-> ${link.target.name}: ${dist}`);
-        return dist * 100;
-      })
+        link.distance = dist * 100;
+      });
+      linkMinDistance = graph.d3Force('link').links().reduce((min, link) => Math.min(min, link.distance), Infinity);
+      linkMaxDistance = graph.d3Force('link').links().reduce((max, link) => Math.max(max, link.distance), 0);
+      graph.numDimensions(3); // Re-heat simulation
+    }
+
+    document.querySelectorAll("input").forEach(elem => elem.addEventListener("input", update));
+
+    const norm = (val, max, min) => (val - min) / (max - min);
+
+    const linkForce = graph
+      .d3Force('link')
+      .distance(link => ('distance' in link) ? norm(link.distance, linkMaxDistance, linkMinDistance) * 100 : 100)
       .strength(1);
   </script>
 </body>

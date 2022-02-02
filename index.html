@@ -14,14 +14,22 @@
     <label title="peak signal-to-noise ratio">
       PSNR
       <input type="range" id="psnr" min="0" max="1" step="0.1" value="0.5">
+      <input type="checkbox" id="psnr-onoff" checked>
     </label>
     <label title="root mean squared error">
       RMSE
       <input type="range" id="rmse" min="0" max="1" step="0.1" value="0.5">
+      <input type="checkbox" id="rmse-onoff" checked>
     </label>
     <label title="spectral angle mapper">
       SAM
       <input type="range" id="sam" min="0" max="1" step="0.1" value="0.5">
+      <input type="checkbox" id="sam-onoff" checked>
+    </label>
+    <label title="ame string similarity">
+      Name
+      <input type="range" id="name" min="0" max="1" step="0.1" value="0.5">
+      <input type="checkbox" id="name-onoff" checked>
     </label>
 
   </div>
@@ -45,26 +53,25 @@
         node.fz = node.z;
       });
 
-    const reheatSimulation = () => {
+    const update = () => {
+      document.querySelectorAll("input[type='checkbox']").forEach(
+        elem => elem.previousElementSibling.disabled = !elem.checked);
       Graph.numDimensions(3); // Re-heat simulation
     }
 
-
-    const psnrMultiplier = document.getElementById("psnr");
-    const rmseMultiplier = document.getElementById("rmse");
-    const samMultiplier = document.getElementById("sam");
-    psnrMultiplier.addEventListener("change", reheatSimulation);
-    rmseMultiplier.addEventListener("change", reheatSimulation);
-    samMultiplier.addEventListener("change", reheatSimulation);
-
-    const norm = (val, max, min) => (val - min) / (max - min);
+    document.querySelectorAll("input").forEach(elem => elem.addEventListener("change", update));
 
     const linkForce = Graph
       .d3Force('link')
-      .distance(link =>
-        (link.metrics.psnr * psnrMultiplier.value) +
-        (link.metrics.rmse * rmseMultiplier.value) +
-        (link.metrics.sam * samMultiplier.value)
-      );
+      .distance(link => {
+        const dist =
+          ((1 - link["img-sim"].psnr) * document.getElementById("psnr").value * document.getElementById("psnr-onoff").checked) +
+          ((1 - link["img-sim"].rmse) * document.getElementById("rmse").value * document.getElementById("rmse-onoff").checked) +
+          ((1 - link["img-sim"].sam) * document.getElementById("sam").value * document.getElementById("sam-onoff").checked) +
+          ((1 - link["name-sim"]) * document.getElementById("name").value * document.getElementById("name-onoff").checked);
+        console.log(`${link.source.name} <-> ${link.target.name}: ${dist}`);
+        return dist * 100;
+      })
+      .strength(1);
   </script>
 </body>

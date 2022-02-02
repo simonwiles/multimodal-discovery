@@ -30,19 +30,19 @@
     <label title="root mean squared error">
       RMSE
       <input type="checkbox" id="rmse-onoff">
-      <input type="range" id="rmse" min="0.1" max="1" step="0.1" value="0.5">
+      <input type="range" id="rmse" min="0.1" max="1" step="0.1" value="0.5" disabled>
       🛈
     </label>
     <label title="spectral angle mapper">
       SAM
       <input type="checkbox" id="sam-onoff">
-      <input type="range" id="sam" min="0.1" max="1" step="0.1" value="0.5">
+      <input type="range" id="sam" min="0.1" max="1" step="0.1" value="0.5" disabled>
       🛈
     </label>
     <label title="name string similarity">
       Name
       <input type="checkbox" id="name-onoff">
-      <input type="range" id="name" min="0.1" max="1" step="0.1" value="0.5">
+      <input type="range" id="name" min="0.1" max="1" step="0.1" value="0.5" disabled>
       🛈
     </label>
 
@@ -51,31 +51,42 @@
   <div id="3d-graph"></div>
 
   <script>
+    let graph;
+    let linkMinDistance;
+    let linkMaxDistance;
 
-    const graph = ForceGraph3D()(document.getElementById("3d-graph"))
-      .nodeThreeObject(({ path }) => {
-        const imgTexture = new THREE.TextureLoader().load(path);
-        const material = new THREE.SpriteMaterial({ map: imgTexture });
-        const sprite = new THREE.Sprite(material);
-        sprite.scale.set(12, 12);
-        return sprite;
-      })
-      .jsonUrl('graph.json')
-      .linkVisibility(false)
-      .onNodeDragEnd((node) => {
-        node.fx = node.x;
-        node.fy = node.y;
-        node.fz = node.z;
-      });
+    const norm = (val, max, min) => (val - min) / (max - min);
 
-    let linkMinDistance = 20;
-    let linkMaxDistance = 20;
+    const initGraph = (graphData) => {
+      calculateDistances(graphData.links);
+      graph = ForceGraph3D()(document.getElementById("3d-graph"))
+        .nodeThreeObject(({ path }) => {
+          const imgTexture = new THREE.TextureLoader().load(path);
+          const material = new THREE.SpriteMaterial({ map: imgTexture });
+          const sprite = new THREE.Sprite(material);
+          sprite.scale.set(12, 12);
+          return sprite;
+        })
+        .graphData(graphData)
+        .linkVisibility(false)
+        .onNodeDragEnd((node) => {
+          node.fx = node.x;
+          node.fy = node.y;
+          node.fz = node.z;
+        });
 
-    const update = () => {
-      document.querySelectorAll("input[type='checkbox']").forEach(
-        elem => elem.nextElementSibling.disabled = !elem.checked);
+      const linkForce = graph
+        .d3Force('link')
+        .distance(link =>
+          ('distance' in link && [...document.querySelectorAll("input[type='checkbox']")].some(x => x.checked))
+            ? norm(link.distance, linkMaxDistance, linkMinDistance) * 100
+            : 100
+        )
+        .strength(1);
+    }
 
-      graph.d3Force('link').links().forEach(link => {
+    const calculateDistances = (links) => {
+      links.forEach(link => {
         const dist =
           ((1 - link["img-sim"].psnr) * document.getElementById("psnr").value * document.getElementById("psnr-onoff").checked) +
           ((1 - link["img-sim"].rmse) * document.getElementById("rmse").value * document.getElementById("rmse-onoff").checked) +
@@ -84,22 +95,19 @@
         console.log(`${link.source.name} <-> ${link.target.name}: ${dist}`);
         link.distance = dist * 100;
       });
-      linkMinDistance = graph.d3Force('link').links().reduce((min, link) => Math.min(min, link.distance), Infinity);
-      linkMaxDistance = graph.d3Force('link').links().reduce((max, link) => Math.max(max, link.distance), 0);
+      linkMinDistance = links.reduce((min, link) => Math.min(min, link.distance), Infinity);
+      linkMaxDistance = links.reduce((max, link) => Math.max(max, link.distance), 0);
+    }
+
+    const update = () => {
+      document.querySelectorAll("input[type='checkbox']").forEach(
+        elem => elem.nextElementSibling.disabled = !elem.checked);
+      calculateDistances(graph.d3Force('link').links())
       graph.numDimensions(3); // Re-heat simulation
     }
 
     document.querySelectorAll("input").forEach(elem => elem.addEventListener("input", update));
+    fetch('graph.json').then(response => response.json()).then(initGraph);
 
-    const norm = (val, max, min) => (val - min) / (max - min);
-
-    const linkForce = graph
-      .d3Force('link')
-      .distance(link =>
-        ('distance' in link && [...document.querySelectorAll("input[type='checkbox']")].some(x => x.checked))
-          ? norm(link.distance, linkMaxDistance, linkMinDistance) * 100
-          : 100
-      )
-      .strength(1);
   </script>
 </body>

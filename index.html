@@ -11,13 +11,17 @@
 
 <body>
   <div id="controls">
-    <label>
-      Factor A
-      <input type="range" id="factor-a" min="0" max="1" step="0.01" value="0.5">
+    <label title="peak signal-to-noise ratio">
+      PSNR
+      <input type="range" id="psnr" min="0" max="1" step="0.1" value="0.5">
     </label>
-    <label>
-      Factor B
-      <input type="range" id="factor-b" min="0" max="1" step="0.01" value="0.5">
+    <label title="root mean squared error">
+      RMSE
+      <input type="range" id="rmse" min="0" max="1" step="0.1" value="0.5">
+    </label>
+    <label title="spectral angle mapper">
+      SAM
+      <input type="range" id="sam" min="0" max="1" step="0.1" value="0.5">
     </label>
 
   </div>
@@ -25,47 +29,16 @@
   <div id="3d-graph"></div>
 
   <script>
-    const imgs = [
-      "cat.jpg",
-      "dog.jpg",
-      "eagle.jpg",
-      "elephant.jpg",
-      "grasshopper.jpg",
-      "octopus.jpg",
-      "owl.jpg",
-      "panda.jpg",
-      "squirrel.jpg",
-      "tiger.jpg",
-      "whale.jpg",
-    ];
-
-    const pairwise = (list) => {
-      if (list.length < 2) { return []; }
-      const rest = list.slice(1);
-      const pairs = rest.map((x) => [list[0], x]);
-      return pairs.concat(pairwise(rest));
-    }
-
-    const nodes = imgs.map((img, id) => ({ id, img }));
-
-    const links = pairwise([...Array(imgs.length).keys()])
-      .map(([source, target]) => ({
-        source: source,
-        target: target,
-        factorA: parseInt(Math.random() * 100, 10),
-        factorB: parseInt(Math.random() * 100, 10)
-      }));
-
 
     const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
-      .nodeThreeObject(({ img }) => {
-        const imgTexture = new THREE.TextureLoader().load(`./imgs/${img}`);
+      .nodeThreeObject(({ path }) => {
+        const imgTexture = new THREE.TextureLoader().load(path);
         const material = new THREE.SpriteMaterial({ map: imgTexture });
         const sprite = new THREE.Sprite(material);
         sprite.scale.set(12, 12);
         return sprite;
       })
-      .graphData({ nodes, links })
+      .jsonUrl('graph.json')
       .onNodeDragEnd((node) => {
         node.fx = node.x;
         node.fy = node.y;
@@ -77,13 +50,21 @@
     }
 
 
-    const factorARange = document.getElementById("factor-a");
-    const factorBRange = document.getElementById("factor-b");
-    factorARange.addEventListener("change", reheatSimulation);
-    factorBRange.addEventListener("change", reheatSimulation);
+    const psnrMultiplier = document.getElementById("psnr");
+    const rmseMultiplier = document.getElementById("rmse");
+    const samMultiplier = document.getElementById("sam");
+    psnrMultiplier.addEventListener("change", reheatSimulation);
+    rmseMultiplier.addEventListener("change", reheatSimulation);
+    samMultiplier.addEventListener("change", reheatSimulation);
+
+    const norm = (val, max, min) => (val - min) / (max - min);
 
     const linkForce = Graph
       .d3Force('link')
-      .distance(link => (link.factorA * factorARange.value) + (link.factorB * factorBRange.value));
+      .distance(link =>
+        (link.metrics.psnr * psnrMultiplier.value) +
+        (link.metrics.rmse * rmseMultiplier.value) +
+        (link.metrics.sam * samMultiplier.value)
+      );
   </script>
 </body>

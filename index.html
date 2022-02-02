@@ -63,17 +63,35 @@
     let graph;
     let linkMinDistance;
     let linkMaxDistance;
+    const highlightNodes = new Set();
 
     const norm = (val, max, min) => (val - min) / (max - min);
 
     const initGraph = (graphData) => {
       calculateDistances(graphData.links);
       graph = ForceGraph3D()(document.getElementById("3d-graph"))
-        .nodeThreeObject(({ path }) => {
-          const imgTexture = new THREE.TextureLoader().load(path);
+        .nodeThreeObject((node) => {
+
+          const imgTexture = new THREE.TextureLoader().load(node.path);
           const material = new THREE.SpriteMaterial({ map: imgTexture });
           const sprite = new THREE.Sprite(material);
           sprite.scale.set(12, 12);
+
+          if (highlightNodes.has(node)) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 300;
+            canvas.height = 300;
+            const ctx = canvas.getContext('2d');
+            ctx.lineWidth = 15;
+            ctx.strokeStyle = '#38f';
+            ctx.strokeRect(7.5, 7.5, 285, 285);
+            const outlineTexture = new THREE.CanvasTexture(canvas);
+            const outlineMaterial = new THREE.SpriteMaterial({ map: outlineTexture });
+            const outlineSprite = new THREE.Sprite(outlineMaterial);
+            outlineSprite.scale.set(1.2, 1.2);
+            sprite.add(outlineSprite)
+          }
+
           return sprite;
         })
         .graphData(graphData)
@@ -82,7 +100,14 @@
           node.fx = node.x;
           node.fy = node.y;
           node.fz = node.z;
-        });
+        })
+        .onNodeHover(node => {
+          if ((node && highlightNodes.has(node))) return;
+          highlightNodes.clear();
+          highlightNodes.add(node);
+          graph.nodeThreeObject(graph.nodeThreeObject())
+        })
+        ;
 
       const linkForce = graph
         .d3Force('link')

@@ -57,6 +57,7 @@
         return sprite;
       })
       .jsonUrl('graph.json')
+      .linkOpacity(0)
       .onNodeDragEnd((node) => {
         node.fx = node.x;
         node.fy = node.y;

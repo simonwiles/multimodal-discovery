@@ -48,6 +48,29 @@ def main():
         links.append(link)
 
     nodes = [{k: v for k, v in img.items() if k != "img"} for img in images]
+
+    min_max = {
+        metric: {
+            "min": min(link["metrics"][metric] for link in links),
+            "max": max(link["metrics"][metric] for link in links),
+        }
+        for metric in METRICS
+    }
+
+    def norm_metrics(metrics):
+        nm = {}
+        for k, v in metrics.items():
+            nm[k] = (v - min_max[k]["min"]) / (min_max[k]["max"] - min_max[k]["min"])
+        return nm
+
+    links = [
+        {
+            "source": link["source"],
+            "target": link["target"],
+            "metrics": norm_metrics(link["metrics"]),
+        }
+        for link in links
+    ]
     print(json.dumps({"nodes": nodes, "links": links}, indent=2))
 
 

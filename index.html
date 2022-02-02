@@ -3,6 +3,16 @@
     body {
       margin: 0;
     }
+
+    #controls {
+      background: rgba(255, 255, 255, .8);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px;
+      position: absolute;
+      width: 100vw;
+      z-index: 2;
+    }
   </style>
 
   <script crossorigin="anonymous" src="https://unpkg.com/three"></script>
@@ -13,23 +23,23 @@
   <div id="controls">
     <label title="peak signal-to-noise ratio">
       PSNR
-      <input type="range" id="psnr" min="0" max="1" step="0.1" value="0.5">
       <input type="checkbox" id="psnr-onoff" checked>
+      <input type="range" id="psnr" min="0" max="1" step="0.1" value="0.5">
     </label>
     <label title="root mean squared error">
       RMSE
-      <input type="range" id="rmse" min="0" max="1" step="0.1" value="0.5">
       <input type="checkbox" id="rmse-onoff" checked>
+      <input type="range" id="rmse" min="0" max="1" step="0.1" value="0.5">
     </label>
     <label title="spectral angle mapper">
       SAM
-      <input type="range" id="sam" min="0" max="1" step="0.1" value="0.5">
       <input type="checkbox" id="sam-onoff" checked>
+      <input type="range" id="sam" min="0" max="1" step="0.1" value="0.5">
     </label>
     <label title="ame string similarity">
       Name
-      <input type="range" id="name" min="0" max="1" step="0.1" value="0.5">
       <input type="checkbox" id="name-onoff" checked>
+      <input type="range" id="name" min="0" max="1" step="0.1" value="0.5">
     </label>
 
   </div>
@@ -38,7 +48,7 @@
 
   <script>
 
-    const Graph = ForceGraph3D()(document.getElementById("3d-graph"))
+    const graph = ForceGraph3D()(document.getElementById("3d-graph"))
       .nodeThreeObject(({ path }) => {
         const imgTexture = new THREE.TextureLoader().load(path);
         const material = new THREE.SpriteMaterial({ map: imgTexture });
@@ -55,13 +65,13 @@
 
     const update = () => {
       document.querySelectorAll("input[type='checkbox']").forEach(
-        elem => elem.previousElementSibling.disabled = !elem.checked);
-      Graph.numDimensions(3); // Re-heat simulation
+        elem => elem.nextElementSibling.disabled = !elem.checked);
+      graph.numDimensions(3); // Re-heat simulation
     }
 
-    document.querySelectorAll("input").forEach(elem => elem.addEventListener("change", update));
+    document.querySelectorAll("input").forEach(elem => elem.addEventListener("input", update));
 
-    const linkForce = Graph
+    const linkForce = graph
       .d3Force('link')
       .distance(link => {
         const dist =

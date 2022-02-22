@@ -1,0 +1,515 @@
+[
+  {
+    "item_id": "SUAC_0",
+    "image_paths": [
+      "img/8921-2.jpg"
+    ],
+    "description": "Seven bundles of spruce fibers wrapped together with plant stems and cordage. Part of acorn processing kit, used to sweep the interior hopper basked clean after acorns have been pounded."
+  },
+  {
+    "item_id": "SUAC_1",
+    "image_paths": [
+      "img/8869-3.jpg"
+    ],
+    "description": "Five blue and four red bands at one end with white feathers. Three blue bands and one red band at other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_2",
+    "image_paths": [
+      "img/8872-2.jpg"
+    ],
+    "description": "Five blue and seven red bands on one end. Two red bands and one blue band on other end with bone point."
+  },
+  {
+    "item_id": "SUAC_3",
+    "image_paths": [
+      "img/8874-2.jpg"
+    ],
+    "description": "Nine black and seven red bands on one end. Three red bands on other end with obsidian projectile point."
+  },
+  {
+    "item_id": "SUAC_4",
+    "image_paths": [
+      "img/8878-2.jpg"
+    ],
+    "description": "Five blue and seven red bands on one end. Two red bands and one blue band on other end with bone point."
+  },
+  {
+    "item_id": "SUAC_5",
+    "image_paths": [
+      "img/8873-2.jpg"
+    ],
+    "description": "Five blue and four red bands on one end with remanats of feathers. Three blue bands and one red band on other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_6",
+    "image_paths": [
+      "img/8870-2.jpg"
+    ],
+    "description": "Five blue and four red bands on one end. Three blue bands and one red band on other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_7",
+    "image_paths": [
+      "img/8879-2.jpg"
+    ],
+    "description": "Six blue and four red bands at one end. Four blue bands and one red band at other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_8",
+    "image_paths": [
+      "img/8875-2.jpg"
+    ],
+    "description": "Five blue and four red bands on one end. Three blue bands and one red band on other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_9",
+    "image_paths": [
+      "img/8877-2.jpg"
+    ],
+    "description": "Five blue and four red bands on one end. Three blue bands and one red band on other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_10",
+    "image_paths": [
+      "img/8876-2.jpg"
+    ],
+    "description": "Five blue and four red bands on one end with feathers. Three blue and one red band with obsidian point on the other end."
+  },
+  {
+    "item_id": "SUAC_11",
+    "image_paths": [
+      "img/8871-2.jpg"
+    ],
+    "description": "Five blue and four red bands on one end. Three bands of blue on other end which is broken off."
+  },
+  {
+    "item_id": "SUAC_12",
+    "image_paths": [
+      "img/8867-2.jpg"
+    ],
+    "description": "Five blue and four red bands on one end, with feathers. Three blue and one red bands on other end with obsidian point (CC)."
+  },
+  {
+    "item_id": "SUAC_13",
+    "image_paths": [
+      "img/8868-12.jpg"
+    ],
+    "description": "Five blue and four red bands on one end. Three blue bands and one red band on other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_14",
+    "image_paths": [
+      "img/8866-2.jpg"
+    ],
+    "description": "Arrow with six red and seven blue bands on one end with feathers; three red bands on other end with obsidian point (CC). Obsidian point attached with thin red threat/fibers; arrow becomes thinner as arrow shaft nears point (E. Kent, 04/03/2015)."
+  },
+  {
+    "item_id": "SUAC_15",
+    "image_paths": [
+      "img/8899-2.jpg"
+    ],
+    "description": "Eight black and sevn red bands on one end. Three red bands and one black band at other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_16",
+    "image_paths": [
+      "img/8897-2.jpg"
+    ],
+    "description": "Eight red and seven black bands on one end with feather. Three red bands on other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_17",
+    "image_paths": [
+      "img/8894-2.jpg"
+    ],
+    "description": "Five blue and four blue bands on one end. Three blue bands and one red band on other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_18",
+    "image_paths": [
+      "img/8881-2.jpg"
+    ],
+    "description": ""
+  },
+  {
+    "item_id": "SUAC_19",
+    "image_paths": [
+      "img/8880-2.jpg"
+    ],
+    "description": "Three black and six red bands on one end with feathers. One large blue band and two red bands at other end with obsidian point."
+  },
+  {
+    "item_id": "SUAC_20",
+    "image_paths": [
+      "img/8893-2.jpg"
+    ],
+    "description": "Five blue and six red bands at one end. Two red bands and one blue band at other end with bone point."
+  },
+  {
+    "item_id": "SUAC_21",
+    "image_paths": [
+      "img/8892.jpg"
+    ],
+    "description": "Five blue bands and seven red bands on one end. Two red bands and one blue band on other end with bone point."
+  },
+  {
+    "item_id": "SUAC_22",
+    "image_paths": [
+      "img/8895-2.jpg"
+    ],
+    "description": "Five blue and seven red bands on one end. Two red bands and one blue band on other end with bone point."
+  },
+  {
+    "item_id": "SUAC_23",
+    "image_paths": [
+      "img/8882-2.jpg"
+    ],
+    "description": "Five blue and ten red bands on one end. Two red and one blue band on other end with bone point. Object appears to have red pigment on bone point."
+  },
+  {
+    "item_id": "SUAC_24",
+    "image_paths": [
+      "img/8898-2.jpg"
+    ],
+    "description": "Five blue and seven red bands on one end. Two red and one blue band on other end with notched section."
+  },
+  {
+    "item_id": "SUAC_25",
+    "image_paths": [
+      "img/8890-2.jpg"
+    ],
+    "description": "Broken tip. Five blue bands, nine red bands at one end. Two red bands and one blue band at other end which is borken off."
+  },
+  {
+    "item_id": "SUAC_26",
+    "image_paths": [
+      "img/8891-2.jpg"
+    ],
+    "description": "Arrow with broken point and no head. Five blue bands and nine red bands on one end. Two red and one blue band on other end which is broken off."
+  },
+  {
+    "item_id": "SUAC_27",
+    "image_paths": [
+      "img/8883-2.jpg"
+    ],
+    "description": "Arrow without head. Plain wooden shaft with some darker bark (?). Notched at one end."
+  },
+  {
+    "item_id": "SUAC_28",
+    "image_paths": [
+      "img/8884-2.jpg"
+    ],
+    "description": "Without head. Two red bands on one one broken end. Eight black bands and seven red bands at other end with notches but no projectile point."
+  },
+  {
+    "item_id": "SUAC_29",
+    "image_paths": [
+      "img/8885-2.jpg"
+    ],
+    "description": "Without head. Plain wooden shaft. Notched on end."
+  },
+  {
+    "item_id": "SUAC_30",
+    "image_paths": [
+      "img/8886-2.jpg"
+    ],
+    "description": "Without head. Five blue and nine red bands at one end. Other end plain. No head, no feathers."
+  },
+  {
+    "item_id": "SUAC_31",
+    "image_paths": [
+      "img/8967.jpg"
+    ],
+    "description": "Rope to catch deer. Finely braided, with braided-in knot, similar to a simple noose. Approximately 1 cm thick."
+  },
+  {
+    "item_id": "SUAC_32",
+    "image_paths": [
+      "img/8902-2.jpg"
+    ],
+    "description": "Elk horn wedge. Used to split wood. Long portion of horn, flat on one side. Some striations on the flat side, perhaps from cutting it in half."
+  },
+  {
+    "item_id": "SUAC_33",
+    "image_paths": [
+      "img/8901-2.jpg"
+    ],
+    "description": "Tapered wedge taken from the base of an elk horn; outside polished with one side flat. Thin end slightly chipped. Used to split wood."
+  },
+  {
+    "item_id": "SUAC_34",
+    "image_paths": [
+      "img/8903-2.jpg"
+    ],
+    "description": "Flaked red chert blade, hafted to a carved ash wood handle and bound with wrapped twine in \"s\" twist, cemented with asphaltum."
+  },
+  {
+    "item_id": "SUAC_36",
+    "image_paths": [
+      "img/8938-2.jpg"
+    ],
+    "description": "Porcupine quills, dyed yellow, tightly braided around a vegetable fiber core, with a needle-like carved wooden stick attached to one end via thin twine or thread. May be detatched from Object ID 8922 or a similar item."
+  },
+  {
+    "item_id": "SUAC_38",
+    "image_paths": [
+      "img/86631.jpg"
+    ],
+    "description": "One bundle of 25 straws tied together with a strip of cotton fabric with a red printed design on it. Straws may be a gaming set of counters, or could be raw materials for basket making."
+  },
+  {
+    "item_id": "SUAC_39",
+    "image_paths": [
+      "img/8823-2.jpg"
+    ],
+    "description": "Die or gambling pieces made of nutshells, pitch, and beads; three to eight white glass seed beads inlayed in pitch in each die, some beads may be missing. Shells slightly cracked."
+  },
+  {
+    "item_id": "SUAC_42",
+    "image_paths": [
+      "img/8936-2.jpg"
+    ],
+    "description": ""
+  },
+  {
+    "item_id": "SUAC_43",
+    "image_paths": [
+      "img/8926-2.jpg"
+    ],
+    "description": "Oval bone with rawhide tie and incised, pigmented cross-hatched triangles. Decorated scraper used to crush lice. Also incorrectly identified in museum records as a comb, ornament, and pendant."
+  },
+  {
+    "item_id": "SUAC_44",
+    "image_paths": [
+      "img/8947a-2.jpg"
+    ],
+    "description": "Woven cedar bark rope. Two strands wrapped together."
+  },
+  {
+    "item_id": "SUAC_45",
+    "image_paths": [
+      "img/4489-2.jpg"
+    ],
+    "description": "Three-piece pump drill, used to bore holes in items. Carved disk, handle, polished shaft. Sharp metal tip, worn leather strap attached to handle. In good condition, fit for use. Shows much use on disk and shaft."
+  },
+  {
+    "item_id": "SUAC_46",
+    "image_paths": [
+      "img/931210-2.jpg"
+    ],
+    "description": "Currently bundled and tied."
+  },
+  {
+    "item_id": "SUAC_47",
+    "image_paths": [
+      "img/8765-2.jpg"
+    ],
+    "description": "Described as \"Moqui\" drill (CC) and pump drill (SEL) with stone point. Wooden drill with cloth rope, stone point, bound on with leather cord. Condition: broken and repaired."
+  },
+  {
+    "item_id": "SUAC_48",
+    "image_paths": [
+      "img/8965-2.jpg"
+    ],
+    "description": "Used for tying deer. Three-stranded with loop in one end."
+  },
+  {
+    "item_id": "SUAC_49",
+    "image_paths": [
+      "img/8966-2.jpg"
+    ],
+    "description": "Woven rope used for tying deer. Three-stranded with loop in one end."
+  },
+  {
+    "item_id": "SUAC_50",
+    "image_paths": [
+      "img/8943-2.jpg"
+    ],
+    "description": "Wood and twine needle which has an open eye at each end of the shaft for easy threading."
+  },
+  {
+    "item_id": "SUAC_51",
+    "image_paths": [
+      "img/8948-2.jpg"
+    ],
+    "description": "Very tightly twisted strands, thin twine. Two strands of twine cordage."
+  },
+  {
+    "item_id": "SUAC_52",
+    "image_paths": [
+      "img/8865-2.jpg"
+    ],
+    "description": "Curved wooden bow concave side painted red and decorated with interspersed sets of navy blue parallel, horizontal lines. Padded hide strip grip in center, sewn in place. Bow is cracked horizontally across the back just above the grip. Sinew string in place; slack. (CC)"
+  },
+  {
+    "item_id": "SUAC_53",
+    "image_paths": [
+      "img/8889-2.jpg"
+    ],
+    "description": "Carved wooden bow; painted red on one side with a wound strip hide grip in the center and a twisted sinew string (still taught)."
+  },
+  {
+    "item_id": "SUAC_54",
+    "image_paths": [
+      "img/8951-2.jpg"
+    ],
+    "description": "Curved wooden bow decorated on concave face with red and turquoise horizontal stripes (22 turquoise and 14 red); wound, leather-strip grip in center. Twisted sinew string wound at both ends; string slack."
+  },
+  {
+    "item_id": "SUAC_55",
+    "image_paths": [
+      "img/8888-2.jpg"
+    ],
+    "description": "Sinew-backed, birch wood bow with hide grip (unraveling); no decoration; sinew string still taught."
+  },
+  {
+    "item_id": "SUAC_57",
+    "image_paths": [
+      "img/7221-2.jpg"
+    ],
+    "description": "Black-brown banded obsidian core obsidian from which many flakes have been taken, red and black. Same type of obsidian used for \"dance money,\" ceremonial obsidian blades."
+  },
+  {
+    "item_id": "SUAC_58",
+    "image_paths": [
+      "img/7251-2.jpg"
+    ],
+    "description": "Crushing stone, pestle. Greenish-colored stone, large base, tapers at midsection, flares at top, 2 chips off base."
+  },
+  {
+    "item_id": "SUAC_59",
+    "image_paths": [
+      "img/7323-2.jpg"
+    ],
+    "description": "Crusher. Larger base, tapers in midsection, flares at top (but base is larger). Large chip in base."
+  },
+  {
+    "item_id": "SUAC_60",
+    "image_paths": [
+      "img/8907-2.jpg"
+    ],
+    "description": "Phallic shaped stone pestle/pounder, greenish toned stone."
+  },
+  {
+    "item_id": "SUAC_61",
+    "image_paths": [
+      "img/931203.jpg"
+    ],
+    "description": "Phallic shaped stone pestle/pounder; greenish toned stone"
+  },
+  {
+    "item_id": "SUAC_62",
+    "image_paths": [
+      "img/7219-2.jpg"
+    ],
+    "description": "Oval soapstone dish, rim broken in two places. Used for catching oil during cooking."
+  },
+  {
+    "item_id": "SUAC_63",
+    "image_paths": [
+      "img/7220-2.jpg"
+    ],
+    "description": "Soapstone dish with rim worn in one spot. Elliptical shape, shallow."
+  },
+  {
+    "item_id": "SUAC_69",
+    "image_paths": [
+      "img/8941-2.jpg"
+    ],
+    "description": "Salmon spear consisting of a wooden shaft and two detatchable spear heads. Carved wooden shaft, contracted at one end and wrapped with twine. Bone and dental material combined to form points tied by twine and cemented with asphaltum."
+  },
+  {
+    "item_id": "SUAC_70",
+    "image_paths": [
+      "img/8603b.jpg"
+    ],
+    "description": "A set of 45 slender wooden gambling sticks bundled together and secured with thread; one stick marked black in the middle. The game is called \"Kin\": the player holds up two sticks and his adversary guesses in which hand is the marked one."
+  },
+  {
+    "item_id": "SUAC_71",
+    "image_paths": [
+      "img/8945-2.jpg"
+    ],
+    "description": "Dip net of iris root fiber twine with stone sinker."
+  },
+  {
+    "item_id": "SUAC_72",
+    "image_paths": [
+      "img/8946-2.jpg"
+    ],
+    "description": "Woven fishing net used for catching salmon."
+  },
+  {
+    "item_id": "SUAC_73",
+    "image_paths": [
+      "img/8944-2.jpg"
+    ],
+    "description": "Woven fishing net used for catching salmon"
+  },
+  {
+    "item_id": "SUAC_75",
+    "image_paths": [
+      "img/8919-2.jpg"
+    ],
+    "description": "Maple bark skirt."
+  },
+  {
+    "item_id": "SUAC_76",
+    "image_paths": [
+      "img/8955-2.jpg"
+    ],
+    "description": "Birch wood bow with twine; painted plain red on convex face with red painted repeated decoration on concave face. Taught fiber string in place."
+  },
+  {
+    "item_id": "SUAC_77",
+    "image_paths": [
+      "img/7222-2.jpg"
+    ],
+    "description": "Very large obsidian core from which many flakes have been taken. Same type of obsidian used for \"dance money,\" ceremonial obsidian blades."
+  },
+  {
+    "item_id": "SUAC_78",
+    "image_paths": [
+      "img/8939.jpg"
+    ],
+    "description": "String of dentalium shell beads strung lengthways."
+  },
+  {
+    "item_id": "SUAC_79",
+    "image_paths": [
+      "img/89311-2.jpg"
+    ],
+    "description": "A money purse made of elk antler with decorative hide strips (some fur missing). Dentalium beads 8931.2 originally stored inside."
+  },
+  {
+    "item_id": "SUAC_83",
+    "image_paths": [
+      "img/8932-2.jpg"
+    ],
+    "description": "A money purse made of elk antler and fur. Short segment of antler slit cut lengthwise. Fur wrapped around. Engraved with line. Triangles around slit."
+  },
+  {
+    "item_id": "SUAC_84",
+    "image_paths": [
+      "img/86632-2.jpg",
+      "img/86633-2.jpg"
+    ],
+    "description": "One bundle thinner sticks, separate bag with no ID tag. Straws may be a gaming set of counters, or could be raw materials for basket making."
+  },
+  {
+    "item_id": "SUAC_85",
+    "image_paths": [
+      "img/86632-2.jpg",
+      "img/86633-2.jpg"
+    ],
+    "description": "Two bundles of thicker, flatter sticks, same material, in one bag. Straws may be a gaming set of counters, or could be raw materials for basket making."
+  },
+  {
+    "item_id": "SUAC_86",
+    "image_paths": [
+      "img/89312-2.jpg"
+    ],
+    "description": "Dentalia shell beads on broken iris root string, shell money. Originally in elk antler money purse 8931.1."
+  }
+]

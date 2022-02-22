@@ -51,10 +51,10 @@
       <input type="range" id="sam" min="0.1" max="1" step="0.1" value="0.5" disabled>
       🛈
     </label>
-    <label title="name string similarity">
-      Name
-      <input type="checkbox" id="name-onoff">
-      <input type="range" id="name" min="0.1" max="1" step="0.1" value="0.5" disabled>
+    <label title="description string similarity">
+      Description
+      <input type="checkbox" id="description-onoff">
+      <input type="range" id="description" min="0.1" max="1" step="0.1" value="0.5" disabled>
       🛈
     </label>
 
@@ -105,7 +105,7 @@
           ((1 - link["img-sim"].psnr) * document.getElementById("psnr").value * document.getElementById("psnr-onoff").checked) +
           ((1 - link["img-sim"].rmse) * document.getElementById("rmse").value * document.getElementById("rmse-onoff").checked) +
           ((1 - link["img-sim"].sam) * document.getElementById("sam").value * document.getElementById("sam-onoff").checked) +
-          ((1 - link["name-sim"]) * document.getElementById("name").value * document.getElementById("name-onoff").checked);
+          ((1 - link["desc-sim"]) * document.getElementById("description").value * document.getElementById("description-onoff").checked);
         // console.log(`${link.source.name} <-> ${link.target.name}: ${dist}`);
         link.distance = dist * 100;
       });

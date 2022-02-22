@@ -3,5 +3,5 @@
   "python.linting.flake8Enabled": true,
   "python.linting.pycodestyleEnabled": false,
   "python.linting.enabled": true,
-  "cSpell.words": ["psnr", "rmse"]
+  "cSpell.words": ["Daggett", "imread", "psnr", "rmse", "sewar", "SUAC"]
 }

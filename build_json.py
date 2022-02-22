@@ -43,7 +43,6 @@ def main():
         }
 
         if img1["img"].shape != img2["img"].shape:
-            print(img1["img"].shape, img2["img"].shape)
             img2_cmp = cv2.resize(img2["img"], img1["img"].shape[:2][::-1])
         else:
             img2_cmp = img2["img"]
